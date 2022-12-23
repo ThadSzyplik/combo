@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <!-- #region Sabio Code - You can Fold this region to remove it from sight -->
     <meta charset="utf-8" />
-	<meta name="referrer" content="unsafe-url" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="referrer" content="unsafe-url" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
     <meta name="description" content="Sabio Coding Bootcamp" />
-    <meta itemprop="image" content="https://sabio.la/Sabio.png">
-    <link rel="shortcut icon" href="https://sabio.la/Sabio.png">
+    <meta itemprop="image" content="https://sabio.la/Sabio.png" />
+    <link rel="shortcut icon" href="https://sabio.la/Sabio.png" />
     <link rel="icon" type="image/png" href="https://sabio.la/Sabio.png" />
     <!-- Do Not Change the HTML title or anything between this line and the line with the 💘's -->
     <title>Generating From Arrays</title>
     <link href="https://pw.sabio.la/dist/all-site.css" rel="stylesheet" />
-    
+
     <script src="https://pw.sabio.la/api/js/site"></script>
     <script src="https://pw.sabio.la/api/js/specs/templates/fromArrays.js"></script>
 
@@ -21,45 +23,116 @@
     <!-- I 💘 Code, You 💘 Code, We all 💘 Code -->
 
     <!-- 💡 All your CSS in here -->
-    <style>
+    <style></style>
+  </head>
 
-    </style>
-</head>
-
-<body class="sabio" data-ins="pw-10-From_Array" data-ins-css="false">
+  <body class="sabio" data-ins="pw-10-From_Array" data-ins-css="false">
     <!-- Do Not Edit or Remove this nav element -->
-    <nav class="do-not-remove navbar navbar-expand-md navbar-dark bg-dark sabio"></nav>
+    <nav
+      class="do-not-remove navbar navbar-expand-md navbar-dark bg-dark sabio"
+    ></nav>
 
     <div class="container workspace">
-        <div class="row">
-
-            <div class="col-md-5 clone-container"></div>
-
-        </div>
+      <div class="row">
+        <div class="col-md-5 clone-container"></div>
+      </div>
     </div>
     <script id="templateThree" type="text/template">
-        <div class="row my-3 t-3">
-            <div class="col-md-12 mb-4">
-                <div class="card border-0 shadow">
-                    <img src="https://i.pravatar.cc/400?img=48" class="card-img-top" alt="...">
-                    <div class="card-body text-center">
-                        <h5 class="card-title mb-0">Content in Template 3</h5>
-                        <div class="card-text text-black-50">Content in Template 3</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      <div class="row my-3 t-3">
+          <div class="col-md-12 mb-4">
+              <div class="card border-0 shadow">
+                  <img src="https://i.pravatar.cc/400?img=48" class="card-img-top" alt="...">
+                  <div class="card-body text-center">
+                      <h5 class="card-title mb-0">Content in Template 3</h5>
+                      <div class="card-text text-black-50">Content in Template 3</div>
+                  </div>
+              </div>
+          </div>
+      </div>
     </script>
 
     <!-- Do Not Edit or Remove this footer element -->
-    <footer class="do-not-remove container-fluid footer mx-auto  fb-targert sabio">
-        <p class="text-center">© Sabio.la 2019</p>
+    <footer
+      class="do-not-remove container-fluid footer mx-auto fb-targert sabio"
+    >
+      <p class="text-center">© Sabio.la 2019</p>
     </footer>
 
     <!--👇🏻 All your JavaScript code goes below here inside this script tag 👇🏻 -->
     <script id="candidateCode">
+      function startUp() {
+        clickHandler();
+      }
+      function getTemplate() {
+        console.log("finding templateThree");
+        var firstClone = $("#templateThree").html();
+        var firstCloneActual = $(firstClone).clone();
+        console.log("clone has been returned");
+        return firstCloneActual;
+      }
+
+      function renderTeamMember(teamMember) {
+        var clone = getTemplate();
+        // the new image needs to replace the image element in the page
+        clone.find(".card-img-top").attr("src", teamMember.avatar);
+
+        // the clone info needs to target specific
+        // elements within the template and replace them, giving the
+        // template new characteristics. hence the find method.
+        clone
+          .find(".card-title")
+          .text(teamMember.firstName + " " + teamMember.lastName);
+        clone.find(".text-black-50").text(teamMember.email);
+        clone.find(".card-text").text(teamMember.id);
+        $(".clone-container").append(clone);
+      }
+
+      function renderTeam(team) {
+        console.log(team);
+        var team = [
+          {
+            id: "35-736-1711",
+            firstName: "Luke",
+            lastName: "Sith",
+            email: "e@ebay.com",
+            gender: "sith",
+            avatar: "https://i.pravatar.cc/400?img=47",
+          },
+          {
+            id: "35-736-1700",
+            firstName: "Eve",
+            lastName: "Smith",
+            email: "esmith0@ebay.com",
+            gender: "Female",
+            avatar: "https://i.pravatar.cc/400?img=47",
+          },
+        ];
+        // for loop, saying for the size of the array, the new var of teamMembers
+        // is created so that we can use this local variable to log the members.
+        for (let index = 0; index < team.length; index++) {
+          // team[index] means simply the local variable is an array named team.
+          const teamMembers = team[index];
+
+          // invoking the function with teamMembers as the parameter will allow
+          // us to invoke the function and use the local var of teamMembers
+          // that WAS local, now to provide info from the for loop.
+          renderTeamMember(teamMembers);
+        }
+        // this is saying, FOR EACH item (member of the team, ) we want to produce
+        // forEACH is attached to EVERY ARRAY.
+        // its a function that says, for EACH ITEM within the array, invoke renderteamMember.
+        //
+        team.forEach((item) => renderTeamMember(item));
+      }
+
+      function logTeamMember(e) {
+        var id = $(this).find(".card-text").text();
+        console.log(id);
+      }
+      function clickHandler() {
+        $(".clone-container").on("click", ".t-3", logTeamMember);
+      }
     </script>
     <!-- 🛑 Do Not Write Any Code Below here -->
-</body>
-
+  </body>
 </html>
