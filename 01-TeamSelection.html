@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- #region Sabio Code - You can Fold this region to remove it from sight -->
+    <meta charset="utf-8" />
+    <meta name="referrer" content="unsafe-url" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="Sabio Coding Bootcamp" />
+    <meta itemprop="image" content="https://sabio.la/Sabio.png" />
+    <link rel="shortcut icon" href="https://sabio.la/Sabio.png" />
+    <link rel="icon" type="image/png" href="https://sabio.la/Sabio.png" />
+    <!-- Do Not Change the HTML title or anything between this line and the line with the 💘's -->
+    <title>Team Template</title>
+    <link href="https://pw.sabio.la/dist/all-site.css" rel="stylesheet" />
+
+    <script src="https://pw.sabio.la/api/js/site"></script>
+    <script src="https://pw.sabio.la/api/js/specs/jQuery/eventHandlers.js"></script>
+
+    <!-- endregion -->
+    <!-- I 💘 Code, You 💘 Code, We all 💘 Code -->
+
+    <!-- 💡 All your CSS in here -->
+    <style>
+      .isSelected {
+        border: 1px solid red;
+      }
+    </style>
+  </head>
+
+  <body
+    class="sabio"
+    data-ins="pw-06-EventHandlers"
+    data-ui="full-height"
+    data-ins-css="false"
+  >
+    <!-- Do Not Edit or Remove this nav element -->
+    <nav
+      class="do-not-remove navbar navbar-expand-md navbar-dark bg-dark sabio"
+    ></nav>
+
+    <div class="container main">
+      <div class="row my-4 align-content-center text-center">
+        <div class="col-md-4">
+          <button type="submit" class="btn btn-primary btn-lg" id="alpha">
+            Alpha
+          </button>
+        </div>
+        <div class="col-md-4">
+          <button type="submit" class="btn btn-primary btn-lg" id="beta">
+            Beta
+          </button>
+        </div>
+        <div class="col-md-4">
+          <button type="button" class="btn btn-primary btn-lg gamma" id="gamma">
+            Gamma
+          </button>
+        </div>
+      </div>
+
+      <section id="members-container">
+        <h1 id="childNotifications">Notifcations from any descendants</h1>
+        <div class="row my-4 align-content-center text-center">
+          <div id="msg" class="col"></div>
+        </div>
+
+        <div class="row team-members">
+          <!-- Team Member 1 -->
+          <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card shadow">
+              <img
+                src="https://i.pravatar.cc/400?img=48"
+                class="card-img-top item"
+                alt="..."
+              />
+              <div class="card-body text-center">
+                <h5 class="card-title mb-0 item">Team Member 1</h5>
+                <div class="card-text text-black-50">Web Developer</div>
+                <button
+                  type="button"
+                  class="btn btn-primary btn-sm m-3 item"
+                  id="cmdClick"
+                >
+                  Click to Select
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Team Member 2 -->
+          <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card shadow">
+              <img
+                src="https://i.pravatar.cc/300"
+                class="card-img-top item"
+                alt="..."
+              />
+              <div class="card-body text-center">
+                <h5 class="card-title mb-0 item">Team Member 2</h5>
+                <div class="card-text text-black-50">Web Developer</div>
+                <button
+                  type="button"
+                  class="btn btn-primary btn-sm m-3 item"
+                  id="cmdDoubleClick"
+                >
+                  Double Click to Select
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Team Member 3 -->
+          <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card shadow">
+              <img
+                src="https://i.pravatar.cc/400?img=7"
+                class="card-img-top item"
+                alt="..."
+              />
+              <div class="card-body text-center">
+                <h5 class="card-title mb-0 item">Team Member 3</h5>
+                <div class="card-text text-black-50">Web Developer</div>
+                <button
+                  type="button"
+                  class="btn btn-primary btn-sm m-3 item"
+                  id="cmdMouse"
+                >
+                  Mouse Over
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Team Member 4 -->
+          <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card shadow">
+              <img
+                src="https://picsum.photos/400?grayscale"
+                class="card-img-top item"
+                alt="..."
+              />
+              <div class="card-body text-center">
+                <h5 class="card-title mb-0 item">Team Member 4</h5>
+                <div class="card-text text-black-50">Web Developer</div>
+                <button
+                  type="button"
+                  class="btn btn-primary btn-sm m-3 item"
+                  id="cmdCtrl"
+                >
+                  CTRL + Click to Select
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    >
+    <!-- Do Not Edit or Remove this footer element -->
+    <footer
+      class="do-not-remove container-fluid footer mx-auto fb-targert sabio"
+    >
+      <p class="text-center">© Sabio.la 2019</p>
+    </footer>
+
+    <!--👇🏻 All your JavaScript code goes below here inside this script tag 👇🏻 -->
+    <script id="candidateCode">
+      function wireUpHandlers() {
+        // wire up handlers are going to make sure that the page has all the correct
+        // items loaded up when you start the page
+        $("#alpha").on("click", onAlphaClicked);
+        $("#beta").on("click", onBetaClicked);
+        $("#gamma").on("click", onGammaClicked);
+        $("#cmdClick").on("click", onProfileSelected);
+        $("#cmdMouse").on("mouseover mouseout", onProfileSelected);
+        $("#cmdDoubleClick").on("dblclick", onProfileSelected);
+        $("#cmdCtrl").on("click", onProfileSelected);
+
+        $("#members-container").on("click", ".item", onChildClicked);
+        console.log("were loading up...");
+      }
+      // startUp makes sure the page is READY before the user can click and nav
+      // thru the page
+      function startUp() {
+        wireUpHandlers();
+      }
+
+      function onAlphaClicked(e) {
+        //e.preventDefault will stop the default action of this function.
+        // if its a BUTTON its going to stop the button from being able to be pressed
+        e.preventDefault();
+        console.log("alpha");
+      }
+
+      function onBetaClicked(e) {
+        e.preventDefault();
+        console.log("beta");
+      }
+
+      function onGammaClicked(e) {
+        e.preventDefault();
+        console.log("gama");
+      }
+      //here, were using the SHOWMESSAGE in the syntax of WHAT message is shown when the button
+      // is clicked, in this function, were going to change that message(html).
+      // the exercise is saying to concatenate the parameters.
+      //this just means to JOIN the parameters
+      function showMessage(elementId, isSelected) {
+        // back ticks are used for creating a jquery OBJECT
+        $("#msg").html(`${elementId} selected = ${isSelected}`);
+      }
+
+      function onProfileSelected(e) {
+        if (e.currentTarget.id === "cmdCtrl") {
+          if (e.ctrlKey) {
+            $(this).closest(".card").toggleClass("isSelected");
+          }
+        } else {
+          $(this).closest(".card").toggleClass("isSelected");
+        }
+        var isThisSelected = $(this).closest(".card").hasClass("isSelected");
+        showMessage(e.currentTarget.id, isThisSelected);
+      }
+      function onChildClicked(e) {
+        $("#childNotifications").text(
+          `${e.currentTarget.tagName} was last clicked`
+        );
+      }
+    </script>
+
+    <!-- 🛑 Do Not Write Any Code Below here -->
+  </body>
+</html>

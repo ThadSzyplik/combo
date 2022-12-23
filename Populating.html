@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- #region Sabio Code - You can Fold this region to remove it from sight -->
+    <meta charset="utf-8" />
+    <meta name="referrer" content="unsafe-url" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="Sabio Coding Bootcamp" />
+    <meta itemprop="image" content="https://sabio.la/Sabio.png" />
+    <link rel="shortcut icon" href="https://sabio.la/Sabio.png" />
+    <link rel="icon" type="image/png" href="https://sabio.la/Sabio.png" />
+    <!-- Do Not Change the HTML title or anything between this line and the line with the 💘's -->
+    <title>Populating Arrays with Data</title>
+    <link href="https://pw.sabio.la/dist/all-site.css" rel="stylesheet" />
+
+    <script src="https://pw.sabio.la/api/js/site"></script>
+    <script src="https://pw.sabio.la/api/js/specs/Arrays/populating.js"></script>
+
+    <!-- #endregion -->
+    <!-- I 💘 Code, You 💘 Code, We all 💘 Code -->
+
+    <!-- 💡 All your CSS in here -->
+    <style></style>
+  </head>
+
+  <body class="sabio" data-ins="pw-08-populating" data-ins-css="false">
+    <!-- Do Not Edit or Remove this nav element -->
+    <nav
+      class="do-not-remove navbar navbar-expand-md navbar-dark bg-dark sabio"
+    ></nav>
+
+    <!-- Do Not Edit or Remove this footer element -->
+    <footer
+      class="do-not-remove container-fluid footer mx-auto fb-targert sabio"
+    >
+      <p class="text-center">© Sabio.la 2019</p>
+    </footer>
+
+    <!--👇🏻 All your JavaScript code goes below here inside this script tag 👇🏻 -->
+    <script id="candidateCode">
+      var getNewTeam = function () {
+        let team = [
+          {
+            id: "team member 1",
+            firstName: "thad",
+            lastName: "s",
+            email: "ts@aol.com",
+            gender: "m",
+            avatar:
+              "https://robohash.org/adipiscinihiliste.jpg?size=50x50%26set=set1",
+          },
+          {
+            id: "team member 2",
+            firstName: "alex",
+            lastName: "s",
+            email: "als@aol.com",
+            gender: "f",
+            avatar:
+              "https://robohash.org/adipiscinihiliste.jpg?size=50x50%26set=set1",
+          },
+          {
+            id: "team member 3",
+            firstName: "erma",
+            lastName: "h",
+            email: "erms@aol.com",
+            gender: "",
+            avatar:
+              "https://robohash.org/adipiscinihiliste.jpg?size=50x50%26set=set1",
+          },
+        ];
+        return team;
+      };
+
+      var addPerson = function (anArray) {
+        anArray.push({
+          id: "team member 4",
+          firstName: "",
+          lastName: "Sabio",
+          email: "",
+          gender: "",
+          avatar:
+            "https://robohash.org/adipiscinihiliste.jpg?size=50x50%26set=set1",
+        });
+      };
+
+      var removePerson = function (indexOfPerson, anArray) {
+        var personRemoved = anArray[indexOfPerson];
+
+        anArray.splice(indexOfPerson, 1);
+
+        return personRemoved;
+      };
+
+      var logNames = function (anArray) {
+        for (let index = 0; index < anArray.length; index++) {
+          const person = anArray[index];
+
+          console.log(person.firstName);
+        }
+      };
+
+      var findSabio = function (people) {
+        var sabioPeople = [];
+        for (let index = 0; index < people.length; index++) {
+          const person = people[index];
+          if (person.lastName === "Sabio") {
+            sabioPeople.push(person);
+          }
+          //return sabioPeople;
+          return people.filter((person) => person.lastName === "Sabio");
+        }
+      };
+    </script>
+    <!-- 🛑 Do Not Write Any Code Below here -->
+  </body>
+</html>

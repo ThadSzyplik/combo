@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- #region Sabio Code - You can Fold this region to remove it from sight -->
+    <meta charset="utf-8" />
+    <meta name="referrer" content="unsafe-url" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="Sabio Coding Bootcamp" />
+    <meta itemprop="image" content="https://sabio.la/Sabio.png" />
+    <link rel="shortcut icon" href="https://sabio.la/Sabio.png" />
+    <link rel="icon" type="image/png" href="https://sabio.la/Sabio.png" />
+    <!-- Do Not Change the HTML title or anything between this line and the line with the 💘's -->
+    <title>Templating 101</title>
+    <link href="https://pw.sabio.la/dist/all-site.css" rel="stylesheet" />
+
+    <script src="https://pw.sabio.la/api/js/site"></script>
+    <script src="https://pw.sabio.la/api/js/specs/templates/clonappend.js"></script>
+
+    <!-- #endregion -->
+    <!-- I 💘 Code, You 💘 Code, We all 💘 Code -->
+
+    <!-- 💡 All your CSS in here -->
+    <style></style>
+  </head>
+
+  <body class="sabio" data-ins="pw-10-cloneappend" data-ins-css="false">
+    <!-- Do Not Edit or Remove this nav element -->
+    <nav
+      class="do-not-remove navbar navbar-expand-md navbar-dark bg-dark sabio"
+    ></nav>
+
+    <div class="container workspace">
+      <div class="row">
+        <div class="col-md-5">
+          <section id="templateOne">
+            <p class="my-3 t-1">Content in Template 1</p>
+          </section>
+          <section id="templateTwo">
+            <div class="row my-3 t-2">
+              <div class="col-md-12">
+                <span>Content in Template 2</span>
+              </div>
+            </div>
+          </section>
+          <section id="templateThree">
+            <div class="row my-3 t-3">
+              <div class="col-md-12 mb-4">
+                <div class="card border-0 shadow">
+                  <img
+                    src="https://i.pravatar.cc/400?img=48"
+                    class="card-img-top"
+                    alt="..."
+                  />
+                  <div class="card-body text-center">
+                    <h5 class="card-title mb-0">Content in Template 3</h5>
+                    <div class="card-text text-black-50">
+                      Content in Template 3
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class="col-md-2">
+          <div class="row my-3">
+            <button type="button"  class="btn btn-primary clone-1">
+              Clone 1
+            </button>
+          </div>
+          <div class="row my-3">
+            <button type="button"  class="btn btn-primary clone-2">
+              Clone 2
+            </button>
+          </div>
+          <div class="row my-3">
+            <button type="button"  class="btn btn-primary clone-3">
+              Clone 3
+            </button>
+            <button type="button" class="clear">Clear</button>
+            <button type="button" class="clone-change">Clone & Change</button>
+            
+        </div>
+        <div class="col-md-5 clone-container">
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Do Not Edit or Remove this footer element -->
+    <footer
+      class="do-not-remove container-fluid footer mx-auto fb-targert sabio"
+    >
+      <p class="text-center">© Sabio.la 2019</p>
+    </footer>
+
+    <!--👇🏻 All your JavaScript code goes below here inside this script tag 👇🏻 -->
+    <script id="candidateCode">
+      function startUp() {
+        wireUpButtons();
+      }
+      function wireUpButtons() {
+        $(".clone-1").on("click", onCloneTemplateOne)
+        $(".clone-2").on("click", onCloneTemplateTwo)
+        $(".clone-3").on("click", onCloneTemplateThree)
+
+        $(".clear").on("click", onClearClicked)
+        $(".clone-change").on("click", copyClone)
+        
+       
+
+    }
+
+    function onClearClicked ()
+    {
+      console.log("clear was clicked")
+      $(".clone-container").empty()
+    }
+
+
+    var copyClone = function (){
+      console.log("copy clone was clicked")
+        var cloneCopy = getTemplate()
+        changeCloneContent(cloneCopy);
+        addCloneToDom(cloneCopy);
+
+      //   $(".clone-container").append(cloneCopyActual)
+      //  $($("#getTemplate").html()).clone();
+
+
+
+    }
+
+
+      function onCloneTemplateOne() {
+       console.log("button one firing")
+        var firstClone = $("#templateOne").html()
+        var firstCloneActual = $(firstClone).clone()
+        $(".clone-container").append(firstCloneActual)
+  
+      }
+
+      function onCloneTemplateTwo() {
+        console.log("button two firing")
+        var secondClone = $("#templateTwo").html()
+        var secondCloneActual = $(secondClone).clone()
+        $(".clone-container").append(secondCloneActual)
+      }
+
+      function onCloneTemplateThree() {
+        console.log("button three firing")
+        var thirdClone = $("#templateThree").html()
+        var thirdCloneActual = $(thirdClone).clone()
+        $(".clone-container").append(thirdCloneActual)
+      }
+
+      function getTemplate() {
+      var getTemplateThree = $("#templateThree").html()
+        var getTemplateThreeActual = $(getTemplateThree).clone()
+        return getTemplateThreeActual;
+
+      //   var getTemplateThree = $($("#templateThree").html()).clone();
+      //  return getTemplateThree;
+       
+        // return $($("#templateThree").html()).clone();
+
+      }
+
+      function addCloneToDom(jqClone) {
+        //adding jqClone to the END(append) of .clone-container
+        // console.log(jqClone)
+
+        $(".clone-container").append(jqClone)
+      }
+
+      function changeCloneContent(jqClone) {
+        var clone = jqClone
+        clone.find(".card-img-top").attr("src", "/images/stock-photos/3.jpg")
+        clone.find(".card-text").text("new text")
+        clone.find(".card-title").text("new title")
+        
+      }
+
+     
+    </script>
+<!-- <script id="template" type="text/html">
+    <div class = "color wrapper col-lg-3 col-md-6 col-sm-6">
+        <div class="color">
+            <div class="swatch">
+                <button type="button" id="clone-3" class="btn btn-primary clone-3">
+            </button>
+            </div>
+        </div>
+    </div> -->
+
+
+</script>
+    <!-- 🛑 Do Not Write Any Code Below here -->
+  </body>
+</html>
