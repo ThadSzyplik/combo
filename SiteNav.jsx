@@ -1,12 +1,49 @@
-import React from "react";
-import {Link} from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+import userService from "../userService";
+import toastr from "toastr";
+import { useState } from "react";
 
-function Navigator(props) {
-//   const navigate = useNavigate();
+function Navigator() {
+  //   const navigate = useNavigate();
+
+  useEffect(() => {
+    userService
+      .getCurrentUser()
+      .then(currentUserSuccess)
+      .catch(currentUserError);
+  }, []);
+
+  function currentUserSuccess(response) {
+    let userInfo = response.data.item.name;
+    console.log("this is current user success handler");
+    // onUserLogg
+    toastr.success("Welcome back, Friend!");
+
+    setCurrentUser((prevState) => {
+      console.log("updater onChange");
+
+      const user = {
+        ...prevState,
+      };
+      user.name = userInfo;
+      return user;
+    });
+  }
+
+  function currentUserError(error) {
+    console.warn(error);
+    toastr.error("No current User!");
+  }
+  const [currentUser, setCurrentUser] = useState({
+    firstName: "",
+  });
+
+  // const loggedInUser = (response) => {
+  //   console.log("onChange", loggedInUser);
 
   return (
     <React.Fragment>
-        
       <nav
         className="navbar navbar-expand-md navbar-dark bg-dark"
         aria-label="Fourth navbar example"
@@ -39,7 +76,6 @@ function Navigator(props) {
               <li className="nav-item">
                 <Link to="/" className="nav-link px-2 text-white link-button">
                   Home
-              
                 </Link>
               </li>
               <li className="nav-item">
@@ -104,17 +140,18 @@ function Navigator(props) {
               </li>
             </ul>
             <div className="text-end">
-
               <a
                 href="/"
                 className="align-items-center mb-2 me-2 mb-lg-0 text-white text-decoration-none"
               >
-                {props.user && props.user.firstName} {props.user && props.user.lastName}
+                {currentUser.name}
               </a>
+
               <Link
                 to="/login"
                 type="button"
                 className="btn btn-outline-light me-2"
+                // onClick={onClick}
               >
                 Login
               </Link>
@@ -128,5 +165,6 @@ function Navigator(props) {
     </React.Fragment>
   );
 }
+// }
 
 export default Navigator;
