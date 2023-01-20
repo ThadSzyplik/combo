@@ -7,32 +7,29 @@ import Navigator from "./components/SiteNav";
 import LoginForm from "./components/user/Login";
 import RegisterForm from "./components/user/Register";
 
+function App() {
+  const [user] = useState({
+    email: "",
+    password: "",
+    tenantId: "U04CSBS07FX",
+    name: "",
+  });
 
-function App () {
-
-const [currentUser] = useState({
-  firstName: "Greg", lastName:"Rojas", loggedIn: true
-})
-
-  console.log(currentUser);
-
-
-
+  console.log(user);
 
   return (
-    
     <React.Fragment>
-      <Navigator user={currentUser}></Navigator>
+      <Navigator userData={user}></Navigator>
 
-  
-    <Routes>
-      <Route path="/" element={<Home user={currentUser}/>}> </Route>
-      {/* <Route path="/page1" element={<Page1 user={currentUser}/>}></Route> */}
-      <Route path="/login" element={<LoginForm></LoginForm>}></Route>
-      <Route path="/register" element={<RegisterForm></RegisterForm>}></Route>
-    </Routes>
+      <Routes>
+        <Route path="/" element={<Home userData={user} />}>
+          {" "}
+        </Route>
+        {/* <Route path="/page1" element={<Page1 userData={user}/>}></Route> */}
+        <Route path="/login" element={<LoginForm></LoginForm>}></Route>
+        <Route path="/register" element={<RegisterForm></RegisterForm>}></Route>
+      </Routes>
     </React.Fragment>
-    
   );
 }
 
